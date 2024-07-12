@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     public int Speed = 10;
-    public double GunCooldown = 0.5;
+    public float GunCooldown = 0.5f;
     
     // Start is called before the first frame update
     void Start()
