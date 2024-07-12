@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    public int Speed = 10;
+    public float Speed = 10f;
     public float GunCooldown = 0.5f;
+    
+    private Rigidbody rb;
     
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Hej jeg er player");
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Hej jeg er player");
-        
-        
+        Vector3 move = rb.velocity;
+        move.x = Input.GetAxisRaw("Horizontal")*Speed;
+        move.z = Input.GetAxisRaw("Vertical")*Speed;
+        rb.velocity = move;
+
     }
+    
 }
 
