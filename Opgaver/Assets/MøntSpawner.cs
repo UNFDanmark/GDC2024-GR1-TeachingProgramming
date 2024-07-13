@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class MøntSpawner : MonoBehaviour
 {
     public float spawnCooldown = 6f;
     public float xMin;
@@ -11,12 +11,12 @@ public class EnemySpawner : MonoBehaviour
     public float zMax;
     
     private float leftovercooldown;
-    public GameObject spawnObject; 
+    public GameObject MøntPrefab; 
     // Start is called before the first frame update
     void Start()
     {
         leftovercooldown = spawnCooldown;
-        Instantiate(spawnObject, transform.position, Quaternion.identity);
+        Instantiate(MøntPrefab, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -25,10 +25,10 @@ public class EnemySpawner : MonoBehaviour
         leftovercooldown = leftovercooldown - Time.deltaTime;
         if (leftovercooldown <= 0)
         {
-            float xspawn = Random.Range(xMin, xMax);
-            float zspawn = Random.Range(xMin, xMax);
+            float xspawn = Random.Range(xMin + transform.position.x, xMax + transform.position.x);
+            float zspawn = Random.Range(zMin + transform.position.z, zMax + transform.position.z);
             Vector3 spawnPosition = new Vector3(xspawn, transform.position.y, zspawn);
-            Instantiate(spawnObject, spawnPosition, Quaternion.identity);
+            Instantiate(MøntPrefab, spawnPosition, Quaternion.identity);
             leftovercooldown = spawnCooldown;
         }
         

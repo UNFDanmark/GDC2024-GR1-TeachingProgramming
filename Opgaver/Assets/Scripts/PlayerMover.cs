@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     public float Speed = 10f;
-    private float GunCooldown = 0.5f;
+
     
     private Rigidbody rb;
     
