@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerShooter : MonoBehaviour
 {
     private Transform transform;
-    public float rotatespeed = 10f;
-
+    public float rotatespeed = 1f;
+    public GameObject BulletPrefab;
     
     // Start is called before the first frame update
     void Start()
