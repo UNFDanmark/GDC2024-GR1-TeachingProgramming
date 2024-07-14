@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         leftovercooldown = spawnCooldown;
-        Instantiate(spawnObject, transform.position, Quaternion.identity);
+        
     }
 
     // Update is called once per frame

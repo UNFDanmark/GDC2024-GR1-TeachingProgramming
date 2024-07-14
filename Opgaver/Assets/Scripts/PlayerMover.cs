@@ -8,6 +8,7 @@ public class PlayerMover : MonoBehaviour
 
     public Animator animator;
     private Rigidbody rb;
+    public GameObject gameOverScreen;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,16 @@ public class PlayerMover : MonoBehaviour
         rb.velocity = move;
         
         animator.SetFloat("Speed",move.magnitude);
-
+        
+        
+    }
+    
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            gameOverScreen.SetActive(true);
+        }
     }
     
 }
