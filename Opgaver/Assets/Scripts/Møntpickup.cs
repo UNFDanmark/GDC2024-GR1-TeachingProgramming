@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Møntpickup : MonoBehaviour
 {
-    private int i = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class Møntpickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        i++;
+        
     }
     
 }

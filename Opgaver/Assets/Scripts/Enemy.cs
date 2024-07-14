@@ -12,15 +12,16 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent agent;
     private Transform playerTransform;
+    public Animator animator;
+    public EnemySpawner myspawner;
     
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("jeg er ond");
         agent = GetComponent<NavMeshAgent>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         agent.destination = playerTransform.position;
-
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullets"))
         {
             Destroy(other.gameObject);
+            myspawner.i--;
             Destroy(gameObject);
             
         }
@@ -38,5 +40,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         agent.destination = playerTransform.position; 
+        animator.SetFloat("Speed",agent.velocity.magnitude);
     }
 }

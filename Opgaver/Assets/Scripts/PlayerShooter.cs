@@ -11,12 +11,14 @@ public class PlayerShooter : MonoBehaviour
     public float Cooldowntime = 0.3f;
     private float leftovercooldown;
     public float bulletspeed = 10f;
-  
+    public Animator animator;
+    private AudioSource audio;
     
     // Start is called before the first frame update
     void Start()
     {
         transform = GetComponent<Transform>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,9 @@ public class PlayerShooter : MonoBehaviour
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             bulletRb.velocity = transform.forward * bulletspeed;
             leftovercooldown = Cooldowntime;
+            
+            animator.SetTrigger("Shoot");
+            audio.Play();
         }
 
         transform.Rotate(0,Input.GetAxisRaw("Turnaround")*rotatespeed,0);
